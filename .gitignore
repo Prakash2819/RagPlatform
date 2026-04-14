@@ -1,0 +1,21 @@
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+
+frontend/node_modules/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Build outputs
+frontend/dist/
+frontend/build/
+# testing
+frontend/coverage
+
+# misc
+frontend/.DS_Store
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
