@@ -20,7 +20,7 @@ import random, string
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
-# ── Helpers ────────────────────────────────────────
+# Helpers 
 def generate_company_code(name: str) -> str:
     prefix = name[:4].upper().replace(" ", "")
     suffix = "".join(
@@ -31,7 +31,7 @@ def generate_company_code(name: str) -> str:
 def extract_domain(email: str) -> str:
     return email.split("@")[1].lower()
 
-# ── Request models ─────────────────────────────────
+# Request models 
 class OrgRegisterRequest(BaseModel):
     company_name:  str
     email:         EmailStr
@@ -44,7 +44,7 @@ class LoginRequest(BaseModel):
     email:    EmailStr
     password: str
 
-# ── Check domain ───────────────────────────────────
+# Check domain
 @router.get("/check-domain")
 def check_domain(domain: str):
     tenant = tenants_col.find_one({"domain": domain})
@@ -55,7 +55,7 @@ def check_domain(domain: str):
         }
     return {"exists": False}
 
-# ── Organization Register ──────────────────────────
+# Organization Register 
 @router.post("/register/org")
 def register_org(req: OrgRegisterRequest):
 
@@ -136,7 +136,7 @@ class EmployeeLoginRequest(BaseModel):
     email:    EmailStr
     password: str
 
-# ── Employee Register ──────────────────────────────
+# Employee Register 
 @router.post("/register/employee")
 def register_employee(req: EmployeeRegisterRequest):
 
@@ -192,7 +192,7 @@ def register_employee(req: EmployeeRegisterRequest):
         "company_name": tenant["name"]
     }
 
-# ── Employee Login ─────────────────────────────────
+# Employee Login 
 @router.post("/login/employee")
 def employee_login(req: EmployeeLoginRequest):
 
