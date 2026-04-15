@@ -13,12 +13,15 @@ import Login from ".pages/Login";
 import Register from "./pages/Register";
 import EmployeeRegister from "./pages/EmployeeRegister";
 import Dashboard from "./pages/Dashboard";
+import Chat from "./pages/Chat";
+import Documents from "./pages/Documents";
 import Analytics from "./pages/Analytics";
 import Account from "./pages/Account";
 import SuperAdmin from "./pages/SuperAdmin";
 
 export default function App() {
   return (
+    <ThemeProvider>
     <AuthProvider>
       <Router>
         <Routes>
@@ -44,6 +47,11 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/documents" element={
+            <ProtectedRoute roles={['admin']}>
+              <Documents />
+            </ProtectedRoute>
+          } />
 
           <Route
             path="/analytics"
@@ -61,10 +69,16 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/chat" element={
+            <ProtectedRoute roles={['admin', 'member']}>
+              <Chat />
+            </ProtectedRoute>
+          } />
 
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
     </AuthProvider>
+    </ThemeProvider>
   );
 }
