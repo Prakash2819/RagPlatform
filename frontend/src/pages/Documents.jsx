@@ -3,6 +3,7 @@ import Layout  from '../components/Layout';
 import { useTheme } from '../context/ThemeContext';
 import API     from '../api/axios';
 import { Trash2, Search, Upload } from 'lucide-react';
+import { FaFile } from 'react-icons/fa';
 
 export default function Documents() {
   const { theme }      = useTheme();
@@ -190,7 +191,7 @@ export default function Documents() {
                              borderRadius:8, display:'flex',
                              alignItems:'center', justifyContent:'center',
                              fontSize:14, flexShrink:0 }}>
-                📋
+                <FaFile/>
               </div>
               <span style={{ fontSize:13, color: isDark?'#d1d5db':'#374151',
                              fontWeight:500 }}>
@@ -213,6 +214,7 @@ export default function Documents() {
             </div>
             <div style={{ textAlign:'right' }}>
               <button onClick={()=>setDeleteId(doc._id)}
+                onEve
                 style={{ background:'none', border:'none', cursor:'pointer',
                          color: isDark?'#6b7280':'#94a3b8', padding:6,
                          borderRadius:6 }}>
@@ -232,7 +234,6 @@ export default function Documents() {
                         maxWidth:380, width:'100%', margin:16,
                         textAlign:'center',
                         border:`1px solid ${isDark?'#2a2d3a':'#e5e7eb'}` }}>
-            <div style={{ fontSize:40, marginBottom:16 }}>🗑️</div>
             <h3 style={{ fontSize:18, fontWeight:700, margin:'0 0 8px',
                          color: isDark?'#f0f2f8':'#0f172a' }}>
               Delete Document?

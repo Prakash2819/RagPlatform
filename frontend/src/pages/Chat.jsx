@@ -4,6 +4,7 @@ import { useTheme }       from '../context/ThemeContext';
 import EmployeeLayout     from '../components/EmployeeLayout';
 import Layout             from '../components/Layout';
 import { Send, Bot, User, StopCircle } from 'lucide-react';
+import { FaBrain, FaRobot } from 'react-icons/fa';
 
 const STORAGE_KEY = 'rag_chat_history';
 const WS_URL      = 'ws://localhost:8000/chat/ws';
@@ -308,7 +309,7 @@ export default function Chat() {
               borderRadius:16, display:'flex',
               alignItems:'center', justifyContent:'center',
               fontSize:28, marginBottom:16,
-            }}>🤖</div>
+            }}><FaBrain/></div>
             <h2 style={{ fontSize:20, fontWeight:700,
                          margin:'0 0 8px',
                          color: isDark?'#f0f2f8':'#0f172a' }}>

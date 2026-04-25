@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import API from "../api/axios";
 import { Eye, EyeOff, Copy, RefreshCw, X, AlertTriangle } from "lucide-react";
+import { FaBuilding, FaKey, FaLock, FaRobot } from "react-icons/fa";
 
 const API_KEY_STORAGE = "rag_api_key";
 
@@ -233,7 +234,7 @@ export default function Account() {
               color: isDark ? "#f0f2f8" : "#0f172a",
             }}
           >
-            🏢 Organization Info
+            <FaBuilding/> Organization Info
           </h2>
           {loading ? (
             <p style={{ color: isDark ? "#6b7280" : "#94a3b8", fontSize: 13 }}>
@@ -293,7 +294,7 @@ export default function Account() {
               color: isDark ? "#f0f2f8" : "#0f172a",
             }}
           >
-            🔑 API Key
+            <FaKey/> API Key
           </h2>
           <p
             style={{
@@ -556,7 +557,7 @@ window.ChatbotConfig={apiKey:"${apiKey}"};
               color: isDark ? "#f0f2f8" : "#0f172a",
             }}
           >
-            🤖 Chatbot Settings
+            <FaRobot style={{fontSize:"16px"}}/> Chatbot Settings
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <div>
@@ -611,7 +612,7 @@ window.ChatbotConfig={apiKey:"${apiKey}"};
               color: isDark ? "#f0f2f8" : "#0f172a",
             }}
           >
-            🔒 Change Password
+            <FaLock/> Change Password
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {["current", "newPw", "confirm"].map((field, i) => (

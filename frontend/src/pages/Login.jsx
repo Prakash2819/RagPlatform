@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
-
+import { MdLayers } from 'react-icons/md'
 export default function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -73,7 +73,7 @@ export default function Login() {
       <div style={s.card}>
 
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={s.logo}>🤖</div>
+          <div style={s.logo}><i class="fa-solid fa-layer-group" style={{backgroundColor:"blue", padding:"10px", width:"50px" , borderRadius:"10px"}}></i></div>
           <h1 style={s.brand}>RAG Platform</h1>
           <p style={s.tagline}>AI-powered knowledge assistant</p>
         </div>
@@ -191,7 +191,7 @@ const s = {
     boxShadow: '0 4px 32px rgba(0,0,0,0.08)',
     border: '1px solid #f1f5f9',
   },
-  logo: { fontSize: 44, marginBottom: 10, display: 'block' },
+  logo: { fontSize: 28, marginBottom: 10, display: 'block' , color:"white",padding:"10px"},
   brand: {
     fontSize: 22, fontWeight: 700, color: '#0f172a',
     margin: '0 0 4px', letterSpacing: '-0.3px'

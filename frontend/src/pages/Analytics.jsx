@@ -12,6 +12,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { FaChartBar, FaDatabase, FaUsers } from "react-icons/fa";
 
 export default function Analytics() {
   const { theme } = useTheme();
@@ -111,12 +112,12 @@ export default function Analytics() {
       >
         {[
           {
-            icon: "💬",
+            icon: <FaDatabase/>,
             label: "Total Queries",
             value: data?.total_queries || 0,
           },
           {
-            icon: "📊",
+            icon: <FaChartBar/>,
             label: "Today",
             value: (data?.recent || []).filter(
               (q) =>
@@ -125,13 +126,13 @@ export default function Analytics() {
             ).length,
           },
           {
-            icon: "👥",
+            icon: <FaUsers/>,
             label: "Unique Users",
             value: new Set((data?.recent || []).map((q) => q.user_email)).size,
           },
         ].map((s, i) => (
           <div key={i} style={card}>
-            <div style={{ fontSize: 24, marginBottom: 12 }}>{s.icon}</div>
+            <div style={{ fontSize: 16, marginBottom: 12 , backgroundColor:isDark?"black":"#c3d3d2" , width:"36px" ,padding:"7px",textAlign:"center",borderRadius:"10px"}}>{s.icon}</div>
             <div
               style={{
                 fontSize: 28,

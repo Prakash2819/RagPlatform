@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
+import { FaUserAlt } from 'react-icons/fa';
 
 export default function EmployeeRegister() {
   const navigate  = useNavigate();
@@ -126,7 +127,7 @@ export default function EmployeeRegister() {
       <div style={S.card}>
 
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={{ fontSize: 44, marginBottom: 10 }}>👤</div>
+          <div style={{ fontSize: 44, marginBottom: 10 }}><FaUserAlt/></div>
           <h1 style={S.brand}>Employee Registration</h1>
           <p style={S.tagline}>
             Join your organization's knowledge platform

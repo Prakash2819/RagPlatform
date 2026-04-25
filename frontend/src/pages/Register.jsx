@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
+import { MdBusiness } from 'react-icons/md';
 
 export default function Register() {
   const navigate  = useNavigate();
@@ -117,7 +118,7 @@ export default function Register() {
 
         {/* Header */}
         <div style={s.logoWrap}>
-          <div style={s.logo}>🏢</div>
+          <div style={s.logo}><MdBusiness/></div>
           <h1 style={s.brand}>Register Organization</h1>
           <p style={s.tagline}>
             Create your AI knowledge platform

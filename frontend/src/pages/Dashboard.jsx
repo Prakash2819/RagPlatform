@@ -4,7 +4,7 @@ import Layout            from '../components/Layout';
 import { useAuth }       from '../context/AuthContext';
 import { useTheme }      from '../context/ThemeContext';
 import API               from '../api/axios';
-
+import { FaFile, FaCheckCircle,FaComments, FaFlask, FaBolt } from 'react-icons/fa';
 export default function Dashboard() {
   const navigate      = useNavigate();
   const { user }      = useAuth();
@@ -45,10 +45,10 @@ export default function Dashboard() {
   };
 
   const stats = [
-    { icon:'📄', label:'Documents',    value: docs.length,                              bg:'#1e3a5f', trend:'Uploaded' },
-    { icon:'✅', label:'Ready',        value: docs.filter(d=>d.status==='ready').length, bg:'#1a3a2a', trend:'Indexed'  },
-    { icon:'💬', label:'Conversations',value: analytics?.total_queries || 0,             bg:'#2d1b69', trend:'Total'   },
-    { icon:'⚡', label:'Avg Response', value:'1.2s',                                     bg:'#3a2a1a', trend:'Speed'   },
+    { icon:<FaFile/>, label:'Documents',    value: docs.length,                              bg:isDark?"black":"#c3d3d2", trend:'Uploaded' },
+    { icon:<FaCheckCircle/>, label:'Ready',        value: docs.filter(d=>d.status==='ready').length, bg:isDark?"black":"#c3d3d2", trend:'Indexed'  },
+    { icon:<FaComments/>, label:'Conversations',value: analytics?.total_queries || 0,             bg:isDark?"black":"#c3d3d2", trend:'Total'   },
+    { icon:<FaBolt/>, label:'Avg Response', value:'1.2s',                                     bg:isDark?"black":"#c3d3d2", trend:'Speed'   },
   ];
 
   const card = {
@@ -189,7 +189,7 @@ export default function Dashboard() {
                                borderRadius:7, display:'flex',
                                alignItems:'center', justifyContent:'center',
                                fontSize:13, flexShrink:0 }}>
-                  📋
+                  <FaFile/>
                 </div>
                 <div style={{ flex:1, minWidth:0 }}>
                   <div style={{ fontSize:13, color: isDark?'#d1d5db':'#374151',
@@ -222,10 +222,10 @@ export default function Dashboard() {
               Quick Actions
             </div>
             {[
-              { label:'📄 Upload Document', path:'/documents', primary:true  },
-              { label:'💬 Open Chat',       path:'/chat',      primary:false },
-              { label:'📈 Analytics',       path:'/analytics', primary:false },
-              { label:'🔑 API Key',         path:'/account',   primary:false },
+              { label:'Upload Document', path:'/documents', primary:true  },
+              { label:'Open Chat',       path:'/chat',      primary:false },
+              { label:'Analytics',       path:'/analytics', primary:false },
+              { label:'API Key',         path:'/account',   primary:false },
             ].map((btn,i) => (
               <button key={i} onClick={()=>navigate(btn.path)} style={{
                 width:'100%', padding:'10px 12px', borderRadius:9,
