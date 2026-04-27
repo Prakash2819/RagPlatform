@@ -112,12 +112,12 @@ export default function Analytics() {
       >
         {[
           {
-            icon: <FaDatabase/>,
+            icon: <FaDatabase style={{color:"#62a1e9",fontSize:'20px',marginBottom:'6px'}}/>,
             label: "Total Queries",
             value: data?.total_queries || 0,
           },
           {
-            icon: <FaChartBar/>,
+            icon: <FaChartBar style={{color:'green',fontSize:'20px',marginBottom:'6px'}}/>,
             label: "Today",
             value: (data?.recent || []).filter(
               (q) =>
@@ -126,13 +126,13 @@ export default function Analytics() {
             ).length,
           },
           {
-            icon: <FaUsers/>,
+            icon: <FaUsers style={{color:'blue',fontSize:'20px',marginBottom:'6px'}}/>,
             label: "Unique Users",
             value: new Set((data?.recent || []).map((q) => q.user_email)).size,
           },
         ].map((s, i) => (
           <div key={i} style={card}>
-            <div style={{ fontSize: 16, marginBottom: 12 , backgroundColor:isDark?"black":"#c3d3d2" , width:"36px" ,padding:"7px",textAlign:"center",borderRadius:"10px"}}>{s.icon}</div>
+            <div>{s.icon}</div>
             <div
               style={{
                 fontSize: 28,
@@ -403,7 +403,7 @@ export default function Analytics() {
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.color = isDark
                       ? "#4b5563"
-                      : "#94a3b8")
+                      : "#d1d5d")
                   }
                   title="Delete query"
                 >

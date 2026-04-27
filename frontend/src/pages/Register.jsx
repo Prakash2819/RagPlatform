@@ -115,10 +115,8 @@ export default function Register() {
   return (
     <div style={s.page}>
       <div style={s.card}>
-
-        {/* Header */}
         <div style={s.logoWrap}>
-          <div style={s.logo}><MdBusiness/></div>
+          <div style={s.logo}><MdBusiness style={{ color:'blue'}}/></div>
           <h1 style={s.brand}>Register Organization</h1>
           <p style={s.tagline}>
             Create your AI knowledge platform
@@ -287,9 +285,9 @@ const s = {
   card: {
     background:   '#ffffff',
     borderRadius: '20px',
-    padding:      '40px',
+    padding:      '30px 40px',
     width:        '100%',
-    maxWidth:     '460px',
+    maxWidth:     '480px',
     boxShadow:    '0 4px 32px rgba(0,0,0,0.08)',
     border:       '1px solid #f1f5f9',
   },
@@ -297,7 +295,7 @@ const s = {
     textAlign:    'center',
     marginBottom: '28px',
   },
-  logo:    { fontSize: '44px', marginBottom: '10px', display: 'block' },
+  logo:    { fontSize: '50px', display: 'block' },
   brand:   { fontSize: '22px', fontWeight: '700', color: '#0f172a',
              margin: '0 0 4px', letterSpacing: '-0.3px' },
   tagline: { fontSize: '13px', color: '#94a3b8', margin: 0 },
