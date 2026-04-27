@@ -32,7 +32,6 @@ export default function EmployeeRegister() {
   const checkDomain = async (domain) => {
     setDomainStatus('checking');
     try {
-      // ← REAL API CALL to your backend
       const res = await API.get(
         `/auth/check-domain?domain=${domain}`
       );
@@ -127,7 +126,7 @@ export default function EmployeeRegister() {
       <div style={S.card}>
 
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={{ fontSize: 44, marginBottom: 10 }}><FaUserAlt/></div>
+          <div style={{ fontSize: 43,}}><FaUserAlt style={{color:'blue'}}/></div>
           <h1 style={S.brand}>Employee Registration</h1>
           <p style={S.tagline}>
             Join your organization's knowledge platform
@@ -336,9 +335,9 @@ const S = {
   card: {
     background:   '#ffffff',
     borderRadius: 20,
-    padding:      40,
+    padding:     '30px 40px',
     width:        '100%',
-    maxWidth:     460,
+    maxWidth:     480,
     boxShadow:    '0 4px 32px rgba(0,0,0,0.08)',
     border:       '1px solid #f1f5f9',
   },

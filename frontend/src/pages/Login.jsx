@@ -187,7 +187,7 @@ const s = {
   },
   card: {
     background: '#ffffff', borderRadius: 20,
-    padding: 40, width: '100%', maxWidth: 420,
+    padding: '30px 40px', width: '100%', maxWidth: 420,
     boxShadow: '0 4px 32px rgba(0,0,0,0.08)',
     border: '1px solid #f1f5f9',
   },

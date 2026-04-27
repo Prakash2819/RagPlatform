@@ -45,10 +45,10 @@ export default function Dashboard() {
   };
 
   const stats = [
-    { icon:<FaFile/>, label:'Documents',    value: docs.length,                              bg:isDark?"black":"#c3d3d2", trend:'Uploaded' },
-    { icon:<FaCheckCircle/>, label:'Ready',        value: docs.filter(d=>d.status==='ready').length, bg:isDark?"black":"#c3d3d2", trend:'Indexed'  },
-    { icon:<FaComments/>, label:'Conversations',value: analytics?.total_queries || 0,             bg:isDark?"black":"#c3d3d2", trend:'Total'   },
-    { icon:<FaBolt/>, label:'Avg Response', value:'1.2s',                                     bg:isDark?"black":"#c3d3d2", trend:'Speed'   },
+    { icon:<FaFile style={{color:"#66bbec"}}/>, label:'Documents',    value: docs.length,                              bg:"#ebf0f0", trend:'Uploaded' },
+    { icon:<FaCheckCircle style={{color:"green"}}/>, label:'Ready',        value: docs.filter(d=>d.status==='ready').length, bg:"#ebf0f0", trend:'Indexed'  },
+    { icon:<FaComments style={{color:"black"}}/>, label:'Conversations',value: analytics?.total_queries || 0,             bg:"#ebf0f0", trend:'Total'   },
+    { icon:<FaBolt style={{color:"#ebbb37"}}/>, label:'Avg Response', value:'1.2s',                                     bg:"#ebf0f0", trend:'Speed'   },
   ];
 
   const card = {
