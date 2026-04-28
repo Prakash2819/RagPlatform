@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
+import { FaBuilding, FaCommentAlt, FaComments, FaFileAlt, FaRobot, FaUserAlt, FaUsers } from 'react-icons/fa';
+
 import {
   LogOut, Building2, Users, MessageSquare,
   FileText, Shield, ChevronRight, ArrowLeft,
@@ -295,20 +297,20 @@ export default function SuperAdmin() {
       }}>
         {[
           {
-            icon: '🏢', label: 'Organizations',
-            value: stats?.total_tenants || 0, bg: '#1e3a5f'
+            icon: <FaBuilding style={{color:"#4b4848"}}/>, label: 'Organizations',
+            value: stats?.total_tenants || 0, bg: '#e5f5ef'
           },
           {
-            icon: '👥', label: 'Total Users',
-            value: stats?.total_users || 0, bg: '#2d1b69'
+            icon: <FaUsers style={{color:"#2daf58"}}/>, label: 'Total Users',
+            value: stats?.total_users || 0, bg: '#e5f5ef'
           },
           {
-            icon: '📄', label: 'Documents',
-            value: stats?.total_documents || 0, bg: '#1a3a2a'
+            icon: <FaFileAlt style={{color:"#a6d7f0"}}/>, label: 'Documents',
+            value: stats?.total_documents || 0, bg: '#e5f5ef'
           },
           {
-            icon: '💬', label: 'Total Queries',
-            value: stats?.total_queries || 0, bg: '#3a2a1a'
+            icon: <FaCommentAlt style={{color:"#464541"}}/>, label: 'Total Queries',
+            value: stats?.total_queries || 0, bg: '#e5f5ef'
           },
         ].map((s, i) => (
           <div key={i} style={{
@@ -418,7 +420,7 @@ export default function SuperAdmin() {
                 alignItems: 'center', justifyContent: 'center',
                 fontSize: 13, flexShrink: 0,
               }}>
-                🏢
+                  <FaBuilding />
               </div>
               <div>
                 <div style={C.tdPrimary}>{t.name}</div>
@@ -532,19 +534,19 @@ export default function SuperAdmin() {
           }}>
             {[
               {
-                icon: '👥', label: 'Employees',
+                icon: <FaUserAlt style={{color:"#474646"}}/>, label: 'Employees',
                 value: employees.length, color: '#3b82f6'
               },
               {
-                icon: '📄', label: 'Documents',
+                icon: <FaFileAlt style={{color:"#474646"}}/>, label: 'Documents',
                 value: documents.length, color: '#8b5cf6'
               },
               {
-                icon: '💬', label: 'Total Queries',
+                icon: <FaComments style={{color:"#413e3e"}}/>, label: 'Total Queries',
                 value: queries.length, color: '#22c55e'
               },
               {
-                icon: '🤖', label: 'Chatbot',
+                icon: <FaRobot style={{color:"#424040"}}/>, label: 'Chatbot',
                 value: selected?.chatbot?.name || 'N/A',
                 color: '#f59e0b'
               },
@@ -579,15 +581,15 @@ export default function SuperAdmin() {
           }}>
             {[
               {
-                id: 'employees', label: '👥 Employees',
+                id: 'employees', label: ' Employees',
                 count: employees.length
               },
               {
-                id: 'documents', label: '📄 Documents',
+                id: 'documents', label: ' Documents',
                 count: documents.length
               },
               {
-                id: 'queries', label: '💬 All Queries',
+                id: 'queries', label: ' All Queries',
                 count: queries.length
               },
             ].map(tab => (
