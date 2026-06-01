@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo1.png'
 import {
   MessageSquare, Plus, Trash2,
   LogOut, Menu, X, BrainCircuit

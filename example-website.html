@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apollo Hospital — Official Website</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .nav-logo span {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg,#2563eb,#7c3aed);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #2563eb; }
+
+    .nav-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+      padding: 80px 40px;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #2563eb;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span { color: #2563eb; }
+
+    .hero p {
+      font-size: 16px;
+      color: #64748b;
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+      padding: 13px 28px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #374151;
+      padding: 13px 28px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ── Services ── */
+    .section {
+      padding: 64px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: #64748b;
+      margin-bottom: 36px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 24px;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* ── AI Banner ── */
+    .ai-banner {
+      background: linear-gradient(135deg,#1e3a8a,#4c1d95);
+      margin: 0 40px 40px;
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .ai-banner-text h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .ai-banner-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .ai-banner-btn {
+      background: white;
+      color: #1e3a8a;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Contact ── */
+    .contact-section {
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      padding: 64px 40px;
+    }
+
+    .contact-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-info h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: #eff6ff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 2px;
+    }
+
+    .contact-item-text p {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 24px 40px;
+      font-size: 13px;
+    }
+
+    footer span { color: #3b82f6; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">
+      <span>🏥</span>
+      Apollo Hospital
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Departments</a></li>
+      <li><a href="#">Doctors</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="nav-btn">Book Appointment</button>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">🏆 India's #1 Multi-Specialty Hospital</div>
+    <h1>Your Health is Our<br><span>Top Priority</span></h1>
+    <p>
+      World-class healthcare with compassionate care.
+      Serving over 2 million patients across India
+      with cutting-edge medical technology.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-primary">Book Appointment →</button>
+      <button class="btn-secondary">Find a Doctor</button>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="section">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-sub">
+      Comprehensive medical care across all specialties
+    </p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">❤️</div>
+        <h3>Cardiology</h3>
+        <p>Advanced heart care with state-of-the-art
+           cardiac catheterization labs and expert
+           cardiologists available 24/7.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h3>Neurology</h3>
+        <p>Comprehensive brain and spine care with
+           advanced neuroimaging and minimally invasive
+           surgical techniques.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🦴</div>
+        <h3>Orthopedics</h3>
+        <p>Joint replacement, sports medicine, and
+           spine surgery with robotic assistance
+           for precise outcomes.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👶</div>
+        <h3>Pediatrics</h3>
+        <p>Specialized care for children from
+           newborns to adolescents with a
+           dedicated pediatric ICU.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <h3>Oncology</h3>
+        <p>Comprehensive cancer care with advanced
+           radiation therapy, chemotherapy, and
+           immunotherapy options.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👁️</div>
+        <h3>Ophthalmology</h3>
+        <p>LASIK, cataract surgery, and retinal
+           treatments with the latest laser
+           technology available.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Banner -->
+  <div class="ai-banner">
+    <div class="ai-banner-text">
+      <h2>🤖 Ask Our AI Assistant Instantly</h2>
+      <p>
+        Have questions about admission procedures,
+        insurance coverage, appointment booking,
+        or treatment options? Our AI assistant
+        answers from our official hospital documents
+        — available 24/7, no waiting on hold.
+      </p>
+    </div>
+    <button class="ai-banner-btn"
+      onclick="document.getElementById('vaultiq-btn').click()">
+      Chat with AI →
+    </button>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-text">
+            <h4>Address</h4>
+            <p>21 Greams Lane, Off Greams Road,<br>
+               Chennai — 600006, Tamil Nadu</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-item-text">
+            <h4>Emergency</h4>
+            <p>1860-500-1066 (24/7)</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-item-text">
+            <h4>Email</h4>
+            <p>info@apollohospital.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div class="contact-item-text">
+            <h4>OPD Hours</h4>
+            <p>Monday – Saturday: 8AM – 8PM<br>
+               Sunday: 9AM – 1PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 style="font-size:24px;font-weight:700;margin-bottom:16px">
+          Book Appointment
+        </h2>
+        <form style="display:flex;flex-direction:column;gap:12px">
+          <input placeholder="Full Name"
+            style="padding:11px 14px;border:1px solid #e5e7eb;
+                   border-radius:9px;font-size:14px;outline:none"/>
+          <input placeholder="Phone Number"
+            style="padding:11px 14px;border:1px solid #e5e7eb;
+                   border-radius:9px;font-size:14px;outline:none"/>
+          <select style="padding:11px 14px;border:1px solid #e5e7eb;
+                         border-radius:9px;font-size:14px;
+                         color:#64748b;outline:none">
+            <option>Select Department</option>
+            <option>Cardiology</option>
+            <option>Neurology</option>
+            <option>Orthopedics</option>
+            <option>Pediatrics</option>
+          </select>
+          <button class="btn-primary" type="button">
+            Book Now →
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      © 2026 Apollo Hospital. All rights reserved. |
+      Powered by <span>VaultIQ AI</span>
+    </p>
+  </footer>
+
+// CHATBOT INTEGRATION — Replace YOUR_API_KEY with actual key    
+  <script>
+    window.ChatbotConfig = {
+      apiKey:   "ak_glPxS0GOIcK6ZXJo1NW4m_8NaXbFRxagkZbb_eZlKDM",
+      botName:  "Apollo Assistant",
+      wsUrl:    "ws://localhost:8000",
+      httpUrl:  "http://localhost:8000",
+    };
+  </script>
+  <script src="http://localhost:8000/widget.js"></script>
+
+</body>
+</html>
