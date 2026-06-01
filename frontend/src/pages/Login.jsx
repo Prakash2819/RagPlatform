@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
+import logo from '../assets/logo2.png'
 import { MdLayers } from 'react-icons/md'
 export default function Login() {
   const navigate = useNavigate();
@@ -73,8 +74,16 @@ export default function Login() {
       <div style={s.card}>
 
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={s.logo}><i class="fa-solid fa-layer-group" style={{backgroundColor:"blue", padding:"10px", width:"50px" , borderRadius:"10px"}}></i></div>
-          <h1 style={s.brand}>RAG Platform</h1>
+          <div style={s.logo}>            
+            <img
+            src={logo}
+            alt="Logo"
+            style={{
+              height: '35%',
+              width: '35%',
+              objectFit: 'contain'
+            }}
+          /></div>
           <p style={s.tagline}>AI-powered knowledge assistant</p>
         </div>
 
@@ -191,12 +200,12 @@ const s = {
     boxShadow: '0 4px 32px rgba(0,0,0,0.08)',
     border: '1px solid #f1f5f9',
   },
-  logo: { fontSize: 28, marginBottom: 10, display: 'block' , color:"white",padding:"10px"},
+  logo: { fontSize: 28,display: 'block', color: "white" },
   brand: {
     fontSize: 22, fontWeight: 700, color: '#0f172a',
     margin: '0 0 4px', letterSpacing: '-0.3px'
   },
-  tagline: { fontSize: 13, color: '#94a3b8', margin: 0 },
+  tagline: { fontSize: 13, color: '#94a3b8' },
   tabs: {
     display: 'flex', padding: 4, marginBottom: 20, gap: 4,
   },

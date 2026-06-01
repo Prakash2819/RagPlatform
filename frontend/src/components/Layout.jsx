@@ -46,12 +46,11 @@ export default function Layout({ children }) {
       }}>
 
         <div style={{
-          padding: '15px 20px 20px', display: 'flex',
+          padding: '15px 20px 20px',
           alignItems: 'center', gap: '10px'
         }}>
           <div style={{
-            width: 36, height: 36, background: '#fff',
-            borderRadius: 50, display: 'flex',
+            width: 130, height: 45,
             alignItems: 'center', justifyContent: 'center'
           }}>
             <img
@@ -64,19 +63,6 @@ export default function Layout({ children }) {
               }}
             />
           </div>
-          <span
-            style={{
-              fontWeight: 700,
-              fontSize: '16px',
-              textTransform: 'uppercase',
-              background: 'linear-gradient(90deg, #00ff7f, #00c6ff, #8a2be2)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              display: 'inline-block'
-            }}
-          >
-            NexaBOt
-          </span>
         </div>
 
         <div style={{

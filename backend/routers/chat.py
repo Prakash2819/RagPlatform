@@ -250,6 +250,115 @@ def ask(
         "response_time_ms": elapsed
     }
 
+@router.websocket("/ws/external")
+async def websocket_external(websocket: WebSocket):
+    await websocket.accept()
+    print("✅ External WebSocket connected")
+
+    try:
+        while True:
+            data    = await websocket.receive_text()
+            payload = json.loads(data)
+
+            question     = payload.get("question","").strip()
+            api_key      = payload.get("api_key","")
+            chat_history = payload.get("chat_history",[])
+
+            if not question:
+                await websocket.send_text(json.dumps({
+                    "type": "error",
+                    "message": "Question is empty"
+                }))
+                continue
+
+            if not api_key:
+                await websocket.send_text(json.dumps({
+                    "type": "error",
+                    "message": "API key required"
+                }))
+                continue
+
+            # Verify API key
+            key_hash = hashlib.sha256(
+                api_key.encode()
+            ).hexdigest()
+
+            tenant = tenants_col.find_one({
+                "api_key_hash":   key_hash,
+                "api_key_active": True
+            })
+
+            if not tenant:
+                await websocket.send_text(json.dumps({
+                    "type": "error",
+                    "message": "Invalid or inactive API key"
+                }))
+                continue
+
+            chatbot    = tenant.get("chatbot", {})
+            collection = chatbot.get("qdrant_collection")
+            prompt     = chatbot.get("system_prompt")
+            name       = chatbot.get("name", "Assistant")
+
+            if not collection:
+                await websocket.send_text(json.dumps({
+                    "type":    "error",
+                    "message": "Chatbot not configured"
+                }))
+                continue
+
+            await websocket.send_text(json.dumps({
+                "type":         "start",
+                "chatbot_name": name
+            }))
+
+            start       = time.time()
+            full_answer = ""
+
+            try:
+                async for chunk in answer_question_stream(
+                    collection_name=collection,
+                    question=question,
+                    system_prompt=prompt,
+                    chat_history=chat_history,
+                    chatbot_name=name
+                ):
+                    full_answer += chunk
+                    await websocket.send_text(json.dumps({
+                        "type":  "chunk",
+                        "chunk": chunk
+                    }))
+            except Exception as e:
+                err = "Sorry, something went wrong."
+                await websocket.send_text(json.dumps({
+                    "type": "chunk", "chunk": err
+                }))
+                full_answer = err
+
+            elapsed = int((time.time() - start) * 1000)
+
+            await websocket.send_text(json.dumps({
+                "type":             "done",
+                "response_time_ms": elapsed
+            }))
+
+            # Save analytics
+            analytics_col.insert_one({
+                "tenant_id":        str(tenant["_id"]),
+                "user_email":       "external",
+                "question":         question,
+                "answer":           full_answer,
+                "response_time_ms": elapsed,
+                "asked_by":         "external",
+                "asked_at":         datetime.utcnow()
+            })
+
+    except WebSocketDisconnect:
+        print("External WebSocket disconnected")
+    except Exception as e:
+        print(f"External WS error: {e}")
+
+
 # ── External HTTP chat (API Key fallback) ─────────
 @router.post("/external/ask")
 def external_ask(

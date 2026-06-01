@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from routers import auth, tenant,superadmin,chat,documents
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
 
 load_dotenv()
 
@@ -30,3 +33,14 @@ def health():
         "status":  "ok",
         "message": "RAG Platform running!"
     }
+
+
+@app.get("/widget.js")
+def serve_widget():
+    widget_path = os.path.join(
+        os.path.dirname(__file__), "widget.js"
+    )
+    return FileResponse(
+        widget_path,
+        media_type="application/javascript"
+    )
